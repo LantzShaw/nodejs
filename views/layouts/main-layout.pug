@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{docTitle}
+        link(rel="stylesheet", href="/css/bootstrap.min.css ")
+        block styles
+
+    body
+
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            a(class="navbar-brand", href="#") NodeJs商城
+            button(class="navbar-toggler",
+                type="button",
+                data-toggle="collapse",
+                data-target="#navbarNav",
+                aria-controls="navbarNav",
+                aria-expanded="false",
+                aria-label="Toggle navigation")
+                span(class="navbar-toggler-icon")
+            div(class="collapse navbar-collapse", id="navbarNav")
+                ul(class="navbar-nav")
+                    li.nav-item(class=(path === '/' ? 'active' : ''))
+                        a(class="nav-link", href="/") 商城
+                    li.nav-item(class=(path === '/admin/add-product' ? 'active': ''))
+                        a(class="nav-link", href="/admin/add-product") 添加产品
+        
+        block content

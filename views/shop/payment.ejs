@@ -1,0 +1,27 @@
+<%- include('../includes/header.ejs') %>
+
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <%= order._id%>
+            <% order.products.forEach(function (p) {%>
+            <!-- <%=JSON.stringify(p)%> -->
+
+                <li class="list-group-item">
+                    <%= p.product.title%>
+                    <%= p.quantity%>
+                </li>  
+            <% })%> 
+        </li>
+    </ul>
+    <h2>总计：<%=totalSum%></h2>
+    <form action="/orderPay" method="post">
+        <input type="hidden" name="outTradeNo" value="<%= order._id%>" />
+        <input type="hidden" name="productCode" value="FAST_INSTANT_TRADE_PAY" />
+        <input type="hidden" name="totalAmount" value="<%= totalSum %>" />
+        <input type="hidden" name="productSubject" value="订单编号：<%= order._id%>，包含<%= order.products.length %>件商品" />
+        <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+        <input type="submit" value="立即支付" class="btn btn-warning m-5 float-right" />
+    </form>
+    
+    
+<%- include('../includes/footer.ejs')%>

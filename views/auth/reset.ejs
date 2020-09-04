@@ -1,0 +1,16 @@
+<%- include('../includes/header.ejs') %>
+<form class="login-form" action="/reset" method="post">
+    <%- include('../includes/error-messges.ejs') %>
+    <div class="form-group">
+        <label for="title">邮箱地址</label>
+        <input type="text" class="form-control" name="email" aria-describedby="emaileHelp" />
+        <small id="emaileHelp" class="form-text text-muted">请输入邮箱地址</small>
+    </div>
+
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+    <button type="submit" class="btn btn-primary">修改密码</button>
+</form>
+<script>
+    console.log(document.cookie);
+</script>
+<%- include('../includes/footer.ejs') %>

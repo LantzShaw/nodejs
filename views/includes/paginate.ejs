@@ -1,0 +1,23 @@
+<nav aria-label="..." class="container mt-4">
+    <ul class="pagination justify-content-center">
+        <% if(currentPage !== 1){ %>
+        <li class="page-item">
+            <a class="page-link" href="?page=1" tabindex="-1">首页</a>
+        </li>
+        <%}%> <% if(hasPrevPage){ %>
+        <li class="page-item">
+            <a class="page-link" href="?page=<%=prevPage%>" tabindex="-1">上一页</a>
+        </li>
+        <%}%> <%for(let i = 1; i <= totalPages; i ++){%>
+        <li class="page-item <%if(i === currentPage){%>active<%}%>"><a class="page-link" href="?page=<%=i%>"><%=i%></a></li>
+        <%}%> <% if(hasNextPage){ %>
+        <li class="page-item">
+            <a class="page-link" href="?page=<%=nextPage%>">下一页</a>
+        </li>
+        <%}%> <% if(currentPage !== totalPages){ %>
+        <li class="page-item">
+            <a class="page-link" href="?page=<%=totalPages%>">尾页</a>
+        </li>
+        <%}%>
+    </ul>
+</nav>

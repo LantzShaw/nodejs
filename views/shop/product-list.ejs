@@ -1,0 +1,52 @@
+<%- include('../includes/header.ejs') %>
+<h2>我的产品</h2>
+
+<% if(pros.length > 0) { %>
+<div class="row">
+    <% for (let product of pros) { %>
+    <div class="col-4 p-2">
+        <div class="card" style="width: 18rem; height: 25rem">
+            <img src="/<%=product.imageUrl%> " class="card-img-top" alt="<%=product.title%>" />
+            <div class="card-body">
+                <h5 class="card-title"><%=product.title%></h5>
+                <p class="card-text"><%=product.description%></p>
+                <p>￥<%=product.price%></p>
+                <div class="row">
+                    <a href="/product-detail/<%=product._id%> " class="btn btn-secondary mr-2">产品详情</a>
+
+                    <%- include('../includes/add-to-cart.ejs', {product}) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% } %>
+    <!-- <nav aria-label="..." class="container mt-4">
+        <ul class="pagination justify-content-center">
+            <% if(currentPage !== 1){ %>
+            <li class="page-item">
+                <a class="page-link" href="?page=1" tabindex="-1">首页</a>
+            </li>
+            <%}%> <% if(hasPrevPage){ %>
+            <li class="page-item">
+                <a class="page-link" href="?page=<%=prevPage%>" tabindex="-1">上一页</a>
+            </li>
+            <%}%> <%for(let i = 1; i <= totalPages; i ++){%>
+            <li class="page-item <%if(i === currentPage){%>active<%}%>"><a class="page-link" href="?page=<%=i%>"><%=i%></a></li>
+            <%}%> <% if(hasNextPage){ %>
+            <li class="page-item">
+                <a class="page-link" href="?page=<%=nextPage%>">下一页</a>
+            </li>
+            <%}%> <% if(currentPage !== totalPages){ %>
+            <li class="page-item">
+                <a class="page-link" href="?page=<%=totalPages%>">尾页</a>
+            </li>
+            <%}%>
+        </ul>
+    </nav> -->
+    <%- include('../includes/paginate.ejs')%>
+</div>
+<% } else { %>
+<div class="alert alert-danger" role="alert">暂无产品</div>
+
+<%}%> <%- include('../includes/footer.ejs')%>

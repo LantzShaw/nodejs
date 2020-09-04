@@ -1,0 +1,25 @@
+<%- include('../includes/header.ejs') %>
+<h2>订单管理</h2>
+<hr class="divider">
+<% if(orders.length > 0) { %>
+    <ul class="list-group">
+        <% orders.forEach(function (order) { %>
+        <li class="list-group-item active">
+            <%= order._id%>
+            <a href="/checkout/<%= order._id%>" class="btn btn-success ml-5">发货单</a><a href="/payment/<%=order._id%>" class="btn btn-danger float-right">点击支付</a>
+            <% order.products.forEach(function (p) {%>
+            <!-- <%=JSON.stringify(p)%> -->
+
+                <li class="list-group-item">
+                    <%= p.product.title%>
+                    <%= p.quantity%>
+                </li>  
+            <% })%> 
+        </li>
+        <% }) %>
+    </ul>
+
+<%}else {%>
+    <h4>暂无订单</h4>
+<%}%>
+<%- include('../includes/footer.ejs')%>
